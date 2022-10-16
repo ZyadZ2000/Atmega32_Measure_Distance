@@ -1,0 +1,20 @@
+#include "ultrasonic.h"
+#include "../MCAL/icu.h"
+
+uint8 g_edgeCounter = 0;
+uint8 g_distanceFlag = 0;
+uint16 g_timeHigh = 0;
+
+
+void Ultrasonic_edgeProcessing(void){
+	g_edgeCounter++;
+	if(g_edgeCounter == 1){
+		Icu_clearTimerValue();
+		Icu_setEdgeDetectionType(FALLING);
+	}
+	else if(g_edgeCounter == 2){
+		g_timeHigh = Icu_getInputCaptureValue();
+		Icu_setEdgeDetectionType(RISING);
+		g_edgeCounter = 0;
+	}
+}
