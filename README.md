@@ -1,6 +1,6 @@
 # Atmega32_Measure_Distance
 
-The system measures using an ultrasonic sensor
+The system measures distance using an ultrasonic sensor
 
 # Implemented Drivers GPIO, LCD, Ultrasonic, and ICU.
 
